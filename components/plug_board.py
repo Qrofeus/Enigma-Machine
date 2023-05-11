@@ -3,11 +3,7 @@ from string import ascii_lowercase
 import random
 
 
-class InvalidPresetCode(Exception):
-    pass
-
-
-def check_code(code: str) -> bool:
+def check_code_plug(code: str) -> bool:
     """Returns True if code matches required format, else False
     Format -> Single character from lowercase english alphabet (re: "[a-z]")"""
     if len(code) == 1 and code in ascii_lowercase:
@@ -22,8 +18,6 @@ class PlugBoard:
         if not code:
             preset = random.randint(0, 25)
         else:
-            if not check_code(code):
-                raise InvalidPresetCode
             preset = ascii_lowercase.index(code)
         self.preset_index = preset
         self.plugs: dict = presets[self.preset_index]
@@ -35,8 +29,6 @@ class PlugBoard:
     def set_preset(self, code: str) -> None:
         """According to the provided alphabet, selects the preset from the data
         :raises InvalidPreset Exception if length of preset_char is not equal to 1"""
-        if not check_code(code):
-            raise InvalidPresetCode
         self.preset_index = ascii_lowercase.index(code)
         self.plugs: dict = presets[self.preset_index]
 
