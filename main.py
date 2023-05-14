@@ -8,8 +8,9 @@ def print_horizontal():
 
 
 def test_enigma(machine_obj: EnigmaMachine):
-    paragraph = random.choice(paragraphs)
+    # paragraph = random.choice(paragraphs)
     # paragraph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    paragraph = paragraphs[0]
     print(paragraph)
     print_horizontal()
 

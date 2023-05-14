@@ -3,12 +3,15 @@ from string import ascii_lowercase
 
 
 class RotorWheel:
-    def __init__(self, wheel: int, offset: str, notch: int = 0):
-        self.wheel: list[int] = wheels[wheel]
+    def __init__(self, wheel: int, offset: str, notch: list[int] = None):
+        self.wheel: list[int] = wheels[wheel][0]
         self.offset = ascii_lowercase.index(offset)
+
+        if not notch:
+            notch = wheels[wheel][1]
         self.notch = notch
 
-    def get_offset(self) -> str:
+    def get_preset(self) -> str:
         return ascii_lowercase[self.offset]
 
     def cipher_letter_forward(self, letter: str) -> str:
@@ -29,6 +32,6 @@ class RotorWheel:
 
     def rotate_one(self) -> bool:
         self.offset = (self.offset + 1) % 26
-        if self.offset == self.notch:
+        if self.offset in self.notch:
             return True
         return False

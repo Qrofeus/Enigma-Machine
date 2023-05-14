@@ -41,7 +41,7 @@ class RotorSet:
         """Returns the preset-code for the current combination of wheels and their offset"""
         preset = self.wheel_permutation
         for wheel in self.rotors:
-            preset += wheel.get_offset()
+            preset += wheel.get_preset()
         return preset
 
     def cipher(self, letter: str) -> str:
