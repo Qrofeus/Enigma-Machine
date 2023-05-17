@@ -83,10 +83,12 @@ presets = [
 ]
 
 
-# def generate_pairs():
+# def generate_pairs(links: int) -> dict:
+#     if 0 > links and links > 13:
+#         raise ValueError
 #     dct = {}
-#     pairs = list(sample(ascii_lowercase, 20))
-#     for i in range(0, 20, 2):
+#     pairs = list(sample(ascii_lowercase, 2*links))
+#     for i in range(0, 2*links, 2):
 #         dct[pairs[i]] = pairs[i + 1]
 #         dct[pairs[i + 1]] = pairs[i]
 #
@@ -99,8 +101,9 @@ presets = [
 #
 # def generate_preset():
 #     n_presets = []
+#     links = 10 # Allowed values [0 - 13]
 #     for _ in range(26):
-#         n_presets.append(generate_pairs())
+#         n_presets.append(generate_pairs(links))
 #     print_presets(n_presets)
 #
 #

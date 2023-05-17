@@ -20,21 +20,35 @@ wheels = [
     ([5, 23, 17, 15, 0, 18, 11, 13, 2, 16, 6, 24, 22, 4, 8, 3, 20, 19, 14, 7, 10, 21, 1, 25, 9, 12], [11, 8])
 ]
 
-# while len(rotor_combinations) < 26:
-#     combo = random.sample(range(len(wheels)), 3)
-#     if combo in rotor_combinations:
-#         continue
-#     rotor_combinations.append(combo)
+# def generate_rotor_combinations():
+#     rotor_combinations = []
+#     while len(rotor_combinations) < 26:
+#         combo = random.sample(range(len(wheels)), ROTOR_COUNT)
+#         if combo in rotor_combinations:
+#             continue
+#         rotor_combinations.append(combo)
 #
-# print(rotor_combinations)
+#     print(rotor_combinations)
 
-# lst = list(range(26))
-# for _ in range(3):
+# def generate_wheel(double: bool) -> list:
+#     lst = list(range(26))
 #     random.shuffle(lst)
-#     notch = [random.randint(0, len(lst) - 1) for _ in range(2)]
-#     print(f"({lst}, {notch}),")
+#     notch = [random.randint(0, len(lst) - 1)]
+#     if double:
+#         notch.append((notch[0] + 13) % 26)
+#     return lst + notch
 
-# # Generate Reflector
+
+# def generate_wheels():
+#     single_notch = 5
+#     double_notch = 3
+#     wheels = []
+#     for _ in range(single_notch):
+#         wheels.append(generate_wheel(double=False))
+#     for _ in range(double_notch):
+#         wheels.append(generate_wheel(double=True))
+#     print(wheels)
+
 # def generate_reflector():
 #     dct = {}
 #     pairs = random.sample(range(26), 26)
@@ -44,8 +58,7 @@ wheels = [
 #         dct[letter2] = letter1
 #
 #     return {letter: dct[letter] for letter in ascii_lowercase}
-#
-#
+
 # def print_dict(dct: dict):
 #     print("{", end="")
 #     for i, item in enumerate(dct.items()):

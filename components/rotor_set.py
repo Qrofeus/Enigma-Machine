@@ -13,6 +13,13 @@ def check_code_rotor(code: str) -> bool:
 
 
 class RotorSet:
+    # All the letters form a two-way link with some other letter in the `reflector`
+    reflector = {
+        'a': 'n', 'b': 's', 'c': 'u', 'd': 'e', 'e': 'd', 'f': 't', 'g': 'z', 'h': 'q', 'i': 'j', 'j': 'i',
+        'k': 'y', 'l': 'x', 'm': 'w', 'n': 'a', 'o': 'r', 'p': 'v', 'q': 'h', 'r': 'o', 's': 'b', 't': 'f',
+        'u': 'c', 'v': 'p', 'w': 'm', 'x': 'l', 'y': 'k', 'z': 'g'
+    }
+
     def __init__(self, code: str = None):
         if not code:
             code = ''.join(random.choices(ascii_lowercase, k=4))
@@ -20,13 +27,6 @@ class RotorSet:
         self.rotors = None
         self.wheel_permutation = None
         self.set_preset(code)
-
-        # All the letters form a two-way link with some other letter in the `reflector`
-        self.reflector = {
-            'a': 'n', 'b': 's', 'c': 'u', 'd': 'e', 'e': 'd', 'f': 't', 'g': 'z', 'h': 'q', 'i': 'j', 'j': 'i',
-            'k': 'y', 'l': 'x', 'm': 'w', 'n': 'a', 'o': 'r', 'p': 'v', 'q': 'h', 'r': 'o', 's': 'b', 't': 'f',
-            'u': 'c', 'v': 'p', 'w': 'm', 'x': 'l', 'y': 'k', 'z': 'g'
-        }
 
     def set_preset(self, code: str) -> None:
         """According to the provided preset-code, selects the rotor combination from the data"""
