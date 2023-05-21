@@ -60,7 +60,7 @@ Format:
 2023-05-11 15:15:16 Cipher Code: fzuze
 ```
 
-**Generator Functions:**\
+## Generator Functions
 These functions are commented out in the file, as they aer only used when there is a need to generate new presets. If you wish to use them _un-comment_ the code-block and run the `rotor_presets.py` to get the outputs in the console. Make sure to un-comment the module imports required for the function present at the top of the file. After use, comment out the code again to avoid any unwanted console prints when these preset-files are imported.
 
 1. **Plug-Presets:**

@@ -12,7 +12,7 @@ Each alphabet being replaced by the corresponding link, those letters with no li
 
 ### Implementation
 
-In python this is programmed as a dictionary with alphabets as (key, value) pairs. Only those letters which have plugs making a link exchange their values (for example-> 'b':'x', 'x':'b').
+In python this is programmed as a dictionary with alphabets as (key, value) pairs. Only those letters which have plugs making a link exchange their values (for example-> 'b':'x', 'x':'b'). [See preset-formats...](../data)
 
 ```python
 {'a': 'a', 'b': 'x', 'c': 'c', 'd': 'e', 'e': 'd', 'f': 'u', 'g': 'g', 'h': 'q', 'i': 'z', 'j': 'w',
@@ -37,7 +37,7 @@ The inner-wiring of the rotors are historically represented as a string of lette
 
 ### Implementation
 
-In python, the ring setting shown as a string of letters is coded as a list of integers ranging from [0-25] corresponding to the 26 letters [a-z], followed by the default notch-position(s) for the that rotor.
+In python, the ring setting shown as a string of letters is coded as a list of integers ranging from [0-25] corresponding to the 26 letters [a-z], followed by the default notch-position(s) for the that rotor. [See preset-formats...](../data)
 
 ```python
 ([22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16], [21])
@@ -62,7 +62,7 @@ Although it is said that there were 3 possible reflectors available for a machin
 
 ## Component Presets
 
-An example of the code-book handed out to the communicating parties is shown below, such code-books were changed every month to ensure secure communication.\
+An example of the code-book handed out to the communicating parties is shown below, such code-books were changed every month to ensure secure communication.
 | ![Code Book Example](../assets/img/enigma-code-book.png) |
 |:--:|
 | Image Credits - [101 Computing](https://www.101computing.net/enigma-daily-settings-generator/) |
@@ -97,10 +97,10 @@ Example: preset-code -> `"fzuze"`
 ```
 + Rotor preset-code -> "zuze"
   - RotorCombination code -> "z", index = 25 in `rotor-combinations` list present in [rotor-presets](../data/rotor_presets.py) file
-```python
-[0, 7, 2]
-([22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16], [21]) # index -> 0
-([5, 23, 17, 15, 0, 18, 11, 13, 2, 16, 6, 24, 22, 4, 8, 3, 20, 19, 14, 7, 10, 21, 1, 25, 9, 12], [11, 8]) # index -> 7
-([10, 7, 1, 15, 17, 14, 13, 4, 16, 20, 11, 25, 12, 22, 18, 2, 0, 9, 8, 6, 24, 19, 23, 21, 5, 3], [2]) # index -> 2
-```
+    ```python
+    [0, 7, 2]
+    ([22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16], [21]) # index -> 0
+    ([5, 23, 17, 15, 0, 18, 11, 13, 2, 16, 6, 24, 22, 4, 8, 3, 20, 19, 14, 7, 10, 21, 1, 25, 9, 12], [11, 8]) # index -> 7
+    ([10, 7, 1, 15, 17, 14, 13, 4, 16, 20, 11, 25, 12, 22, 18, 2, 0, 9, 8, 6, 24, 19, 23, 21, 5, 3], [2]) # index -> 2
+    ```
   - Rotor offsets -> "uze", offset values = 20, 25, 4
