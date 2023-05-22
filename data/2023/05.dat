@@ -1,31 +1,31 @@
-[4, 6, 0]-['W', 'H', 'L']-['M', 'C', 'K']-IW SV FY TR NJ UB
-[2, 1, 3]-['C', 'B', 'W']-['X', 'V', 'G']-UW OQ NB MH TD SI
-[4, 0, 7]-['E', 'H', 'I']-['C', 'Y', 'G']-MQ XD HJ SV GC IW
-[4, 0, 3]-['D', 'C', 'T']-['L', 'Y', 'B']-GT IR OJ YF UX AK
-[7, 0, 4]-['C', 'A', 'N']-['X', 'H', 'S']-JP CG XK EF UA YB
-[4, 6, 2]-['Y', 'B', 'S']-['M', 'Q', 'X']-FW AH VI RP CY OX
-[4, 6, 7]-['T', 'D', 'W']-['R', 'B', 'Y']-MG QJ EY ZX OR HW
-[5, 2, 6]-['Z', 'J', 'W']-['X', 'W', 'T']-MW NR IA XE HP FD
-[2, 7, 0]-['I', 'F', 'Z']-['H', 'P', 'R']-RM PG TJ DA YO UH
-[1, 3, 5]-['T', 'N', 'K']-['R', 'U', 'S']-KE CY TW OI PN AU
-[3, 6, 7]-['N', 'Z', 'V']-['A', 'H', 'Q']-DG HF KM LZ AT IP
-[2, 7, 3]-['F', 'R', 'Z']-['L', 'N', 'G']-WG PC KO UR ID QN
-[5, 1, 6]-['K', 'I', 'O']-['G', 'D', 'C']-PG NJ US CD FO KE
-[5, 3, 6]-['M', 'T', 'N']-['K', 'A', 'B']-VZ JW TB GH FO YM
-[2, 6, 7]-['B', 'Z', 'E']-['U', 'F', 'T']-DX TZ LU BM AI YC
-[3, 5, 6]-['Z', 'G', 'S']-['M', 'D', 'Q']-UI MH CE BS DA TY
-[2, 0, 1]-['L', 'B', 'W']-['T', 'C', 'U']-IE AK WN OX HB ZJ
-[1, 5, 3]-['R', 'L', 'B']-['N', 'Q', 'F']-EA HJ UP RI DL YS
-[3, 0, 1]-['U', 'W', 'F']-['K', 'W', 'J']-BC IR MZ WY NT KO
-[4, 3, 0]-['U', 'B', 'G']-['B', 'H', 'Y']-MA GC NS HR QB WP
-[1, 4, 2]-['N', 'C', 'T']-['Q', 'R', 'F']-GU PB LT YR SI EC
-[1, 4, 2]-['R', 'O', 'F']-['U', 'L', 'B']-FK WN RE VB CG MA
-[6, 3, 4]-['T', 'J', 'O']-['H', 'S', 'G']-OE XB DQ VL KH GP
-[1, 3, 5]-['E', 'F', 'P']-['I', 'D', 'Z']-IG SL PX TN AY ZK
-[4, 5, 6]-['N', 'D', 'O']-['N', 'X', 'R']-KG LM DY HE WP NJ
-[7, 6, 3]-['U', 'G', 'T']-['P', 'H', 'R']-HO VN BJ MX KQ FY
-[7, 6, 3]-['W', 'N', 'R']-['Q', 'D', 'G']-UB MX EK NY OF RC
-[3, 1, 2]-['A', 'E', 'O']-['B', 'T', 'E']-HT CN DX MA EW PL
-[2, 3, 1]-['H', 'R', 'F']-['C', 'O', 'Z']-OF RD NW HJ PS QV
-[3, 7, 2]-['C', 'J', 'F']-['A', 'E', 'U']-FA VL EG KU TZ BP
-[1, 6, 4]-['B', 'Y', 'T']-['U', 'Z', 'G']-PO YF AQ HB WS ZK
+[[3, 6, 0], ['B', 'J', 'W'], ['B', 'F', 'Z'], 'ZO GJ AR VX QF HS']
+[[1, 2, 4], ['P', 'E', 'G'], ['Y', 'V', 'G'], 'RT NG SZ EM UP WQ']
+[[0, 7, 2], ['I', 'N', 'M'], ['N', 'A', 'B'], 'BO CE XL GA MW NT']
+[[3, 4, 1], ['N', 'Q', 'F'], ['K', 'Z', 'T'], 'FZ OK YL DJ WN XC']
+[[4, 0, 7], ['J', 'P', 'Q'], ['N', 'B', 'J'], 'JY IM CA EK SG RQ']
+[[6, 4, 0], ['L', 'K', 'Y'], ['Z', 'H', 'Y'], 'PT HM DX ZA KR VJ']
+[[6, 3, 0], ['A', 'L', 'G'], ['W', 'M', 'I'], 'NU LS EP KG QV RW']
+[[5, 6, 2], ['A', 'U', 'K'], ['Z', 'P', 'W'], 'PE MC FG QU KX LI']
+[[6, 4, 5], ['K', 'G', 'R'], ['I', 'K', 'H'], 'LU QJ RD KY GA OS']
+[[1, 3, 7], ['D', 'L', 'A'], ['D', 'R', 'U'], 'JK HT PB ML XD UA']
+[[3, 1, 0], ['Y', 'J', 'D'], ['A', 'Z', 'M'], 'BM QA UO CW LF DS']
+[[2, 0, 5], ['F', 'K', 'V'], ['R', 'U', 'N'], 'AV QO IM RL XG KT']
+[[4, 5, 3], ['C', 'B', 'I'], ['M', 'P', 'U'], 'WC PM TU YR NG QX']
+[[3, 4, 6], ['Y', 'C', 'D'], ['M', 'O', 'P'], 'VM EI GD LX PF QW']
+[[7, 0, 1], ['G', 'Y', 'Q'], ['Y', 'I', 'J'], 'DB LZ UE JW OA NS']
+[[1, 4, 2], ['U', 'V', 'R'], ['Z', 'X', 'S'], 'QF VG OH CD AS XW']
+[[5, 2, 0], ['X', 'I', 'T'], ['T', 'F', 'A'], 'JV ON ZB EI GP YC']
+[[5, 2, 1], ['J', 'Q', 'H'], ['T', 'G', 'J'], 'JR SB HT MG AY KW']
+[[0, 5, 4], ['K', 'Y', 'I'], ['Y', 'P', 'F'], 'SZ RB DO JA QG MY']
+[[7, 2, 1], ['O', 'W', 'Z'], ['F', 'J', 'E'], 'EH ZT XY VW DJ LM']
+[[3, 4, 2], ['T', 'M', 'N'], ['R', 'H', 'O'], 'FX WA OE VK PQ MI']
+[[5, 1, 2], ['W', 'K', 'L'], ['P', 'Q', 'G'], 'HB LI KA EO FQ JD']
+[[3, 2, 6], ['D', 'C', 'Z'], ['Y', 'D', 'T'], 'TV WE BS IM LK JA']
+[[2, 7, 3], ['X', 'N', 'F'], ['F', 'Z', 'R'], 'FT JM PS QX YB NO']
+[[4, 1, 3], ['D', 'L', 'P'], ['A', 'H', 'J'], 'DG NT AR IK QU YJ']
+[[0, 1, 6], ['I', 'Q', 'X'], ['H', 'M', 'R'], 'LU ZW NQ FA ET IH']
+[[5, 0, 6], ['H', 'B', 'U'], ['O', 'G', 'H'], 'VB PI JF CG DO WR']
+[[0, 7, 1], ['K', 'P', 'O'], ['D', 'P', 'E'], 'ER VQ BN IC HP GL']
+[[0, 6, 5], ['G', 'X', 'S'], ['G', 'Y', 'P'], 'NO GH CI BP UR TY']
+[[5, 3, 6], ['S', 'B', 'T'], ['H', 'U', 'K'], 'AD KF BP VR WC YX']
+[[4, 2, 7], ['R', 'Y', 'A'], ['F', 'S', 'Y'], 'DI TK NU XP YV WZ']

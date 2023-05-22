@@ -1,15 +1,5 @@
-from data.rotor_presets import ROTOR_COUNT, rotor_combinations
 from components.rotorwheel import RotorWheel
-from string import ascii_lowercase
-import random
-
-
-def check_code_rotor(code: str) -> bool:
-    """Returns True if code matches required format, else False
-    Format -> String with length double the specified ROTOR_COUNT and all characters are alphabets"""
-    if len(code) == (1 + ROTOR_COUNT) and code.isalpha():
-        return True
-    return False
+from data.rotor_presets import wheels
 
 
 class RotorSet:
@@ -20,29 +10,19 @@ class RotorSet:
         'u': 'c', 'v': 'p', 'w': 'm', 'x': 'l', 'y': 'k', 'z': 'g'
     }
 
-    def __init__(self, code: str = None):
-        if not code:
-            code = ''.join(random.choices(ascii_lowercase, k=4))
-
-        self.rotors = None
-        self.wheel_permutation = None
-        self.set_preset(code)
-
-    def set_preset(self, code: str) -> None:
-        """According to the provided preset-code, selects the rotor combination from the data"""
-        self.wheel_permutation = code[0]
-        rotor_combination = rotor_combinations[ascii_lowercase.index(code[0])]
-
+    def __init__(self, presets: list):
         self.rotors: list[RotorWheel] = []
-        for i, wheel in enumerate(rotor_combination):
-            self.rotors.append(RotorWheel(wheel, code[1 + i]))
+        self.presets = presets
+        self.set_preset(presets)
 
-    def get_preset(self) -> str:
-        """Returns the preset-code for the current combination of wheels and their offset"""
-        preset = self.wheel_permutation
-        for wheel in self.rotors:
-            preset += wheel.get_preset()
-        return preset
+    def set_preset(self, presets: list) -> None:
+        """According to the provided presets [rotors, notches, offsets],
+        function selects the rotor combination from data, and sets up to required specifications"""
+        rotors, notches, offsets = presets[0], presets[1], presets[2]
+        self.rotors = []
+        for i in range(len(rotors)):
+            d_notch = rotors[i] > 4
+            self.rotors.append(RotorWheel(wheels[rotors[i]], notches[i], offsets[i], d_notch))
 
     def cipher(self, letter: str) -> str:
         """Ciphers the input letter in the arrangement, Forward through the individual rotors then ciphered through
@@ -56,7 +36,6 @@ class RotorSet:
             cipher = wheel.cipher_letter_backward(cipher)
 
         self.increment_rotors()
-
         return cipher
 
     def increment_rotors(self):

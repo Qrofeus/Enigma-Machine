@@ -1,18 +1,14 @@
-from data.rotor_presets import wheels
 from string import ascii_lowercase
 
 
 class RotorWheel:
-    def __init__(self, wheel: int, offset: str, notch: list[int] = None):
-        self.wheel: list[int] = wheels[wheel][0]
-        self.offset = ascii_lowercase.index(offset)
-
-        if not notch:
-            notch = wheels[wheel][1]
-        self.notch = notch
-
-    def get_preset(self) -> str:
-        return ascii_lowercase[self.offset]
+    def __init__(self, wheel: list[int], offset: str, notch: str, double_notch: bool = False):
+        self.wheel = wheel
+        self.offset = ascii_lowercase.index(offset.lower())
+        self.notch = [ascii_lowercase.index(notch.lower())]
+        if double_notch:
+            self.notch.append((self.notch[0] + 13) % 26)
+        # print(self.wheel, self.offset, self.notch)
 
     def cipher_letter_forward(self, letter: str) -> str:
         input_i = ascii_lowercase.index(letter)

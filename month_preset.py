@@ -1,7 +1,7 @@
 import datetime
 import calendar
 import random
-import ast
+from pathlib import Path
 from string import ascii_uppercase
 from data.rotor_presets import wheels, ROTOR_COUNT
 
@@ -34,33 +34,20 @@ def generate_month(days: int) -> list:
     return lst
 
 
-def extract_preset(line: str):
-    rotor, notches, offsets, links = line.split("-")
-    rotor = ast.literal_eval(rotor)
-    notches = ast.literal_eval(notches)
-    offsets = ast.literal_eval(offsets)
-    links = links[:-1]
-    return rotor, notches, offsets, links
-
-
 def main():
     today = datetime.date.today()
-    year, month = today.year, today.month + 1
-    max_days = calendar.monthrange(year, month)[1]
-    f_path = f"data/{year}/{month:02}.dat"
+    year, month = today.year, today.month
+    f_path = Path(f"data/{year}/{month:02}.dat")
 
-    presets = generate_month(max_days)
-    print(presets)
-
-    with open(f_path, "w") as file:
-        for preset in presets:
-            preset_str = "-".join(map(str, preset))
-            file.write(f"{preset_str}\n")
-
-    with open(f_path, "r") as file:
-        for line in file.readlines():
-            n_preset = extract_preset(line)
-            print(n_preset)
+    if not f_path.is_file():
+        max_days = calendar.monthrange(year, month)[1]
+        presets = generate_month(max_days)
+        with open(f_path, "w") as file:
+            for preset in presets:
+                file.write(f"{str(preset)}\n")
+        print(f"{month=} file created")
+    else:
+        print(f"{month=} file already exists")
 
 
 if __name__ == '__main__':

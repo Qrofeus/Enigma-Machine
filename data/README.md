@@ -59,28 +59,3 @@ Format:
 ```
 2023-05-11 15:15:16 Cipher Code: fzuze
 ```
-
-## Generator Functions
-These functions are commented out in the file, as they aer only used when there is a need to generate new presets. If you wish to use them _un-comment_ the code-block and run the `rotor_presets.py` to get the outputs in the console. Make sure to un-comment the module imports required for the function present at the top of the file. After use, comment out the code again to avoid any unwanted console prints when these preset-files are imported.
-
-1. **Plug-Presets:**
-   ```python
-   generate_preset()
-   ```
-   Change the `links` variable in the function, to specify the number of letter pairings you want to have for all the plug-board combinations. Once generated, copy from the console and update the `presets` list in the code.
-
-2. **Rotor-Presets:**
-   ```python
-   generate_rotor_combinations()
-   ```
-   The new Rotor-Combinations will be printed out to the console, copy the new combinations from the console and update the rotor_combinations list.
-   ```python
-   generate_wheels()
-   ```
-   Change the `single_notch` and `double_notch` values if required to alter the counts of those types of wheels in the collections. Make sure the sum of these values is greater-than or equal to ROTOR_COUNT. Copy the newly generated wheels from the console to the wheels list in the code.
-   ```python
-   generate_reflector()
-   ```
-   This function allows you to generate the Reflector used in the `RotorSet` class. When the new reflector is printed to the console, copy that dictionary to the [rotor_set.py](../components/rotor_set.py) file -> `reflector` class variable.
-
-Some other functions may be used from the commented code, that aid in formatting the code to avoid long lines in the code that cause overflow in the editor window. These function are purely for visual aid and do not alter the generated presets.

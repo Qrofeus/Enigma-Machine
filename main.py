@@ -14,13 +14,13 @@ def test_enigma(machine_obj: EnigmaMachine):
     print(paragraph)
     print_horizontal()
 
-    preset_code = machine_obj.get_presets()
+    # preset_code = machine_obj.get_presets()
 
     cipher_1 = machine_obj.cipher_message(paragraph)
     print(cipher_1)
     print_horizontal()
 
-    machine_obj.set_preset(preset_code)
+    # machine_obj.set_preset(preset_code)
     print(machine_obj.cipher_message(cipher_1))
 
 
