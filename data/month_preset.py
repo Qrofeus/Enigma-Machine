@@ -36,7 +36,7 @@ def generate_month(days: int) -> list:
 
 def main():
     today = datetime.date.today()
-    year, month = today.year, today.month
+    year, month = today.year, (today.month + 1)
     f_path = Path(f"data/{year}/{month:02}.dat")
 
     if not f_path.is_file():
