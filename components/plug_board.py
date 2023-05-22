@@ -9,6 +9,7 @@ class PlugBoard:
     def set_preset(self, code: str) -> None:
         """According to the provided letter pairs, generates the link dictionary used as preset"""
         pairs = code.lower().split()
+        self.plugs = dict()
         for link in pairs:
             self.plugs[link[0]] = link[1]
             self.plugs[link[1]] = link[0]

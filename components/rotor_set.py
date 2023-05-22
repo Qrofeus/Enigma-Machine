@@ -12,7 +12,6 @@ class RotorSet:
 
     def __init__(self, presets: list):
         self.rotors: list[RotorWheel] = []
-        self.presets = presets
         self.set_preset(presets)
 
     def set_preset(self, presets: list) -> None:
