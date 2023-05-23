@@ -20,7 +20,7 @@ In python this is programmed as a dictionary with alphabets as (key, value) pair
  'u': 'f', 'v': 't', 'w': 'j', 'x': 'b', 'y': 'k', 'z': 'i'}
 ```
 
-In [plug_presets](../data/plug_presets.py) 26 such combinations are declared in a list, which can be used by passing a preset-code containing any ONE of the 26 alphabets using `PlugBoard.set_presets()`.
+In [plug_presets](../data/private_code_presets.py) 26 such combinations are declared in a list, which can be used by passing a preset-code containing any ONE of the 26 alphabets using `PlugBoard.set_presets()`.
 
 ## Rotor Mechanism
 
@@ -83,13 +83,13 @@ In this python implementation, while there is implementation for the notch to be
 To generate random presets for PlugBoard and Rotors, see [data directory](../data)
 
 Preset-Code format (3 rotor configuration): `"[Plug-preset][Rotor-preset]"` 5 (1+4) character string
-+ The plug-preset code corresponds to one of the 26 possible combinations defined in [plug-presets](../data/plug_presets.py)
++ The plug-preset code corresponds to one of the 26 possible combinations defined in [plug-presets](../data/private_code_presets.py)
 + The rotor-preset is further broken down into: `"[Rotor-combo][Rotor-offsets]"`
    - The rotor-combo code corresponds to one of the 26 possible combinations defined in `rotor-combinations` list present in [rotor-presets](../data/rotor_presets.py) file. The `RotorSet` class will access the specified combination and create the `RotorWheel` objects for the rotor numbers in that combination.
    - The rotor-offsets will define the offset value for each rotor in that combination.
 
 Example: preset-code -> `"fzuze"`
-+ PlugBoard preset-code -> "f", index = 5 in [plug-presets](../data/plug_presets.py)
++ PlugBoard preset-code -> "f", index = 5 in [plug-presets](../data/private_code_presets.py)
 ```python
 {'a': 'j', 'b': 'b', 'c': 'c', 'd': 'p', 'e': 'y', 'f': 'i', 'g': 'm', 'h': 't', 'i': 'f', 'j': 'a',
  'k': 'k', 'l': 'r', 'm': 'g', 'n': 'x', 'o': 'o', 'p': 'd', 'q': 'v', 'r': 'l', 's': 'z', 't': 'h',

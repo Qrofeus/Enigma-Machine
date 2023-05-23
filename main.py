@@ -1,7 +1,3 @@
-from data.test_paragraphs import paragraphs
-from enigma_machine import EnigmaMachine
-
-
 def main():
     pass
 

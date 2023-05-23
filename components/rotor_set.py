@@ -44,3 +44,62 @@ class RotorSet:
             if wheel.rotate_one():
                 continue
             break
+
+
+# reflectors = [
+#     {
+#         'a': 'n', 'b': 't', 'c': 'f', 'd': 'v', 'e': 'h', 'f': 'j', 'g': 'q', 'h': 'c', 'i': 'u', 'j': 'k',
+#         'k': 'r', 'l': 's', 'm': 'x', 'n': 'b', 'o': 'z', 'p': 'y', 'q': 'p', 'r': 'o', 's': 'd', 't': 'g',
+#         'u': 'm', 'v': 'a', 'w': 'l', 'x': 'i', 'y': 'w', 'z': 'e'
+#     },
+#     {
+#         'a': 'p', 'b': 'a', 'c': 'w', 'd': 'm', 'e': 'n', 'f': 'o', 'g': 'r', 'h': 't', 'i': 'q', 'j': 'd',
+#         'k': 'z', 'l': 'v', 'm': 'l', 'n': 'g', 'o': 'b', 'p': 'u', 'q': 'i', 'r': 'c', 's': 'e', 't': 's',
+#         'u': 'x', 'v': 'y', 'w': 'h', 'x': 'f', 'y': 'j', 'z': 'k'
+#     },
+#     {
+#         'a': 'j', 'b': 'f', 'c': 'r', 'd': 'x', 'e': 'p', 'f': 'w', 'g': 'k', 'h': 'q', 'i': 's', 'j': 'o',
+#         'k': 'b', 'l': 'h', 'm': 'a', 'n': 'g', 'o': 'l', 'p': 'e', 'q': 't', 'r': 'y', 's': 'v', 't': 'n',
+#         'u': 'u', 'v': 'z', 'w': 'i', 'x': 'm', 'y': 'd', 'z': 'c'
+#     },
+#     {
+#         'a': 'r', 'b': 's', 'c': 'd', 'd': 'o', 'e': 'w', 'f': 'h', 'g': 'a', 'h': 'p', 'i': 'c', 'j': 'k',
+#         'k': 'f', 'l': 'x', 'm': 'u', 'n': 'z', 'o': 'm', 'p': 'e', 'q': 't', 'r': 'v', 's': 'i', 't': 'n',
+#         'u': 'g', 'v': 'q', 'w': 'y', 'x': 'b', 'y': 'l', 'z': 'j'
+#     },
+#     {
+#         'a': 'x', 'b': 'm', 'c': 'j', 'd': 'd', 'e': 's', 'f': 'q', 'g': 'o', 'h': 'u', 'i': 'h', 'j': 'l',
+#         'k': 'i', 'l': 'b', 'm': 'n', 'n': 'p', 'o': 't', 'p': 'v', 'q': 'e', 'r': 'r', 's': 'w', 't': 'k',
+#         'u': 'z', 'v': 'g', 'w': 'y', 'x': 'a', 'y': 'c', 'z': 'f'
+#     }
+# ]
+
+# # Reflectors Generator Code
+# def print_dict(dct: dict) -> None:
+#     print("{")
+#     for i, key in enumerate(dct.keys()):
+#         print(f"'{key}': '{dct[key]}'", end=", ")
+#         if i % 10 == 9:
+#             print()
+#     print("\n}")
+#
+#
+# def main():
+#     from string import ascii_lowercase
+#     from random import shuffle
+#
+#     reflectors: list[dict] = []
+#     for _ in range(5):
+#         lst = list(ascii_lowercase)
+#         shuffle(lst)
+#         n_reflector = {}
+#
+#         for i, letter in enumerate(ascii_lowercase):
+#             n_reflector[letter] = lst[i]
+#         reflectors.append(n_reflector)
+#
+#     for j in range(5):
+#         print_dict(reflectors[j])
+#
+# if __name__ == '__main__':
+#     main()

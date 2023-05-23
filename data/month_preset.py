@@ -2,7 +2,6 @@ import datetime
 import calendar
 import os.path
 import random
-from pathlib import Path
 from string import ascii_uppercase
 from data.rotor_presets import wheels, ROTOR_COUNT
 
