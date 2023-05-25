@@ -46,7 +46,7 @@ class EnigmaMachine:
                 level=logging.DEBUG,
                 format="%(asctime)s \n%(message)s",
                 datefmt="%Y-%m-%d %H:%M:%S",
-                filename="./data/logs.log"
+                filename="data/logs.txt"
             )
         # Private message variables
         self.private_message = False
@@ -71,6 +71,7 @@ class EnigmaMachine:
         """The EnigmaMachine is set to the presets defined for the date passed"""
         self.message_date = message_date
         self._setup_machine(extract_preset(message_date))
+        # print(f"Machine presets set for: {self.message_date}")
 
     def set_private_code(self, code: str) -> None:
         """Selects the presets defined according to the code passed, valid for one message"""
@@ -85,6 +86,9 @@ class EnigmaMachine:
         self._setup_machine(extract_code(code))
 
         self.private_message = True
+
+    def get_private_code(self) -> str:
+        return self.private_code
 
     def _cipher_letter(self, char: str) -> str:
         """Processes a single character through the plug_board and rotor combinations to generate a cipher"""

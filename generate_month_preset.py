@@ -37,7 +37,8 @@ def generate_month(days: int) -> list:
 def main():
     today = datetime.date.today()
     year, month = today.year, (today.month + 1)
-    f_path = f"./{year}/{month:02}.dat"
+    f_path = f"./data/{year}/{month:02}.dat"
+    print(f"Attempting month-preset creation for {month=:02}")
 
     if not os.path.exists(f_path):
         max_days = calendar.monthrange(year, month)[1]
