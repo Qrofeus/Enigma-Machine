@@ -42,7 +42,7 @@ def main():
                 try:
                     machine.set_preset_date(n_date)
                 except FileNotFoundError:
-                    print(">> Presets not yet defined for required month. Try using a date from the current month.")
+                    print(">> Presets not yet defined for required month. Try using a date from the current decade.")
                     continue
 
             case "private":
