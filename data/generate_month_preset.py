@@ -3,15 +3,12 @@ import calendar
 import os.path
 import random
 from string import ascii_uppercase
-
-# from data.rotor_presets import wheels, ROTOR_COUNT
-# 'data.rotor_presets' does not work with github-actions
-ROTOR_COUNT = 3
-WHEELS_COUNT = 8
+from data.rotor_presets import wheels, ROTOR_COUNT
 
 
 def get_rotor_preset() -> tuple[list, list, list]:
-    rotors: list = random.sample(range(WHEELS_COUNT), ROTOR_COUNT)
+    wheel_count = len(wheels)
+    rotors: list = random.sample(range(wheel_count), ROTOR_COUNT)
     notches: list = random.sample(ascii_uppercase, ROTOR_COUNT)
     offsets: list = random.sample(ascii_uppercase, ROTOR_COUNT)
     return rotors, notches, offsets
