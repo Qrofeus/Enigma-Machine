@@ -19,7 +19,7 @@ def main():
             have typed the message to process the cipher through the EnigmaMachine. 
             EnigmaMachine only ciphers alphabets, all white-spaces and punctuation/symbols will remain as they are in the ciphered message.
             For private-messages make sure that the private-key is set using the 'private' command. To check if the private-key is set, use the 'code' command.''',
-        "exit": '''Close the EnigmaMachine and exit the program.'''
+        "exit/quit": '''Close the EnigmaMachine and exit the program.'''
     }
 
     while True:
@@ -59,7 +59,7 @@ def main():
                 message = input("Type your message:\n").strip()
                 print(f">> Ciphered message:\n{machine.cipher_message(message)}")
 
-            case "exit":
+            case "exit" | "quit":
                 exit(0)
 
             case _:

@@ -2,25 +2,25 @@
 
 ## PlugBoard
 
-Through a series of 10 wired connections (plugs), 20 letters were linked such that when a letter was pressed if connected to another letter with the plugs, the letter was switched with the corresponding link. For example, if following connections were made using plugs `[BX DE FU HQ IZ JW KY LP MN TV]`, then the transmitted will be ciphered as
+Through a series of 6 wired connections (plugs), 12 letters were linked such that when a letter was pressed if connected to another letter with the plugs, the letter was switched with the corresponding link. For example, if following connections were made using plugs `DY TZ QM IN JS PE`, then the transmitted will be ciphered as
 ```
 The robot clicked disapprovingly, gurgled briefly inside its cubical interior and extruded a pony glass of brownish liquid. "Sir, you will undoubtedly end up in a drunkard's grave, dead of hepatic cirrhosis," it informed me virtuously as it returned my ID card. I glared as I pushed the glass across the table.
 --------------------------------------------------
-Vqd roxov cpzcyde ezsallrotzmgpk, gfrgpde xrzdupk zmszed zvs cfxzcap zmvdrzor ame dbvrfede a lomk gpass ou xrojmzsq pzhfze. "Szr, kof jzpp fmeofxvdepk dme fl zm a erfmyare's gratd, edae ou qdlavzc czrrqoszs," zv zmuornde nd tzrvfofspk as zv rdvfrmde nk ZE care. Z gparde as Z lfsqde vqd gpass across vqd vaxpd.
+Zhp roboz clnckpy ynjaeerovnigld, gurglpy brnpfld nijnyp nzj cubncal nizprnor aiy pxzruypy a eoid glajj of browinjh lnmuny. "Jnr, dou wnll uiyoubzpyld piy ue ni a yruikary'j gravp, ypay of hpeaznc cnrrhojnj," nz niforqpy qp vnrzuoujld aj nz rpzuripy qd NY cary. N glarpy aj N eujhpy zhp glajj acrojj zhp zablp.
 ```
-Each alphabet being replaced by the corresponding link, those letters with no links are forwarded as is.
+Each alphabet is replaced by the corresponding link, those letters with no links are forwarded as is.
 
 ### Implementation
 
-In python this is programmed as a dictionary with alphabets as (key, value) pairs. Only those letters which have plugs making a link exchange their values (for example-> 'b':'x', 'x':'b'). [See preset-formats...](../data)
+Given the plug-board setup for the date in the form of `DY TZ QM IN JS PE`, the program will convert it to a dictionary, where the intended letters are switched. For any given input (key) to the dictionary, corresponding output (value) will be received when ciphered for the Plug-Board.
 
+The above configuration of plug-board setup is represented in code as follows,
 ```python
-{'a': 'a', 'b': 'x', 'c': 'c', 'd': 'e', 'e': 'd', 'f': 'u', 'g': 'g', 'h': 'q', 'i': 'z', 'j': 'w',
- 'k': 'y', 'l': 'p', 'm': 'n', 'n': 'm', 'o': 'o', 'p': 'l', 'q': 'h', 'r': 'r', 's': 's', 't': 'v',
- 'u': 'f', 'v': 't', 'w': 'j', 'x': 'b', 'y': 'k', 'z': 'i'}
+{'a': 'a', 'b': 'b', 'c': 'c', 'd': 'y', 'e': 'p', 'f': 'f', 'g': 'g', 'h': 'h', 'i': 'n', 'j': 's',
+ 'k': 'k', 'l': 'l', 'm': 'q', 'n': 'i', 'o': 'o', 'p': 'e', 'q': 'm', 'r': 'r', 's': 'j', 't': 'z',
+ 'u': 'u', 'v': 'u', 'w': 'w', 'x': 'x', 'y': 'd', 'z': 't'}
 ```
-
-In [plug_presets](../data/private_code_presets.py) 26 such combinations are declared in a list, which can be used by passing a preset-code containing any ONE of the 26 alphabets using `PlugBoard.set_presets()`.
+For [private-messages](../README.md) a set of 26 such combinations of plug-bard setups is available in the `plug_links` list in the [private_code_presets.py](../data/private_code_presets.py) file. These setups can be accessed by using any ONE of the english alphabet letter when creating a code for a private-message.
 
 ## Rotor Mechanism
 
@@ -37,14 +37,18 @@ The inner-wiring of the rotors are historically represented as a string of lette
 
 ### Implementation
 
-In python, the ring setting shown as a string of letters is coded as a list of integers ranging from [0-25] corresponding to the 26 letters [a-z], followed by the default notch-position(s) for the that rotor. [See preset-formats...](../data)
+In python, the ring setting shown as a string of letters is coded as a list of integers ranging from [0-25] corresponding to the 26 letters [a-z]. 
 
 ```python
-([22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16], [21])
-([15, 13, 3, 10, 4, 5, 14, 11, 12, 16, 25, 21, 22, 18, 0, 24, 19, 17, 2, 6, 7, 9, 1, 20, 23, 8], [17, 12])
+[22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16]
+[4, 15, 14, 22, 24, 18, 17, 1, 19, 12, 6, 2, 16, 11, 0, 8, 23, 7, 21, 5, 20, 9, 10, 3, 25, 13]
 ```
 
-The notch-position(s) can be set explicitly when creating the `RotorWheel` object by passing a list containing the notch-position(s) as the third parameter `notch:list[int]` to the `RotorWheel.__init__()` function.
+The notch positions and offsets for each rotor-wheel are explicitly defined each time a new rotor configuration is set.
+
+8 such rotor-wheels are available in [rotor_presets.py](../data/rotor_presets.py), of which 3 will be selected resulting in a total of 8P3(336) permutations in the placements of wheels alone. Rotor-wheels - 5, 6, and 7 (0 base counting) - will have double notches when used in the EnigmaMachine.
+
+The presets for each day are defined in [data](../data) directory. Presets include the offsets and notch positions for each rotor.
 
 ## Reflector
 
@@ -58,7 +62,9 @@ For example, `ab, cr, do, eg, fq, ht, ik, jl, ms, ny, pz, ux , vw` could be the 
  'u': 'x', 'v': 'w', 'w': 'v', 'x': 'u', 'y': 'n', 'z': 'p'}
 ```
 
-Although it is said that there were 3 possible reflectors available for a machines, most code-books available don't show any preset-code for changing out reflectors. Owing to this, for this implementation of the EnigmaMachine, the reflector is hard coded into the [EnigmaMachine class](../enigma_machine.py), however coding in additional reflectors and modifying the `EnigmaMachine.__init__()` function to accept reflector preset-code wouldn't be hard.
+It is said that there were 3 possible reflectors available for a machines, most code-books available show that the reflectors are kept constant for the entire month. For this implementation of the EnigmaMachine, the reflector is hard coded into the [RotorSet class](rotor_set.py).
+
+However, additional reflector configurations and the generator code for said reflectors is available in the `rotor_set.py`, commented out at the bottom of the file. For future versions an additional functionality can be added to change out the reflectors.
 
 ## Component Presets
 
@@ -76,31 +82,4 @@ left (5, A), middle (3, K), right (2, K)
 + **Initial Rotor Positions (offsets):**\
 left (F), middle (D), right (V)
 
-### Implementation
-
-In this python implementation, while there is implementation for the notch to be set when creating the RotorWheel object, the present preset-code format does not allow for setting the notch-position during run-time. The notch positions may be altered by changing the position values in [rotor-presets](../data/rotor_presets.py) file.
-
-To generate random presets for PlugBoard and Rotors, see [data directory](../data)
-
-Preset-Code format (3 rotor configuration): `"[Plug-preset][Rotor-preset]"` 5 (1+4) character string
-+ The plug-preset code corresponds to one of the 26 possible combinations defined in [plug-presets](../data/private_code_presets.py)
-+ The rotor-preset is further broken down into: `"[Rotor-combo][Rotor-offsets]"`
-   - The rotor-combo code corresponds to one of the 26 possible combinations defined in `rotor-combinations` list present in [rotor-presets](../data/rotor_presets.py) file. The `RotorSet` class will access the specified combination and create the `RotorWheel` objects for the rotor numbers in that combination.
-   - The rotor-offsets will define the offset value for each rotor in that combination.
-
-Example: preset-code -> `"fzuze"`
-+ PlugBoard preset-code -> "f", index = 5 in [plug-presets](../data/private_code_presets.py)
-```python
-{'a': 'j', 'b': 'b', 'c': 'c', 'd': 'p', 'e': 'y', 'f': 'i', 'g': 'm', 'h': 't', 'i': 'f', 'j': 'a',
- 'k': 'k', 'l': 'r', 'm': 'g', 'n': 'x', 'o': 'o', 'p': 'd', 'q': 'v', 'r': 'l', 's': 'z', 't': 'h',
- 'u': 'u', 'v': 'q', 'w': 'w', 'x': 'n', 'y': 'e', 'z': 's'}
-```
-+ Rotor preset-code -> "zuze"
-  - RotorCombination code -> "z", index = 25 in `rotor-combinations` list present in [rotor-presets](../data/rotor_presets.py) file
-    ```python
-    [0, 7, 2]
-    ([22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16], [21]) # index -> 0
-    ([5, 23, 17, 15, 0, 18, 11, 13, 2, 16, 6, 24, 22, 4, 8, 3, 20, 19, 14, 7, 10, 21, 1, 25, 9, 12], [11, 8]) # index -> 7
-    ([10, 7, 1, 15, 17, 14, 13, 4, 16, 20, 11, 25, 12, 22, 18, 2, 0, 9, 8, 6, 24, 19, 23, 21, 5, 3], [2]) # index -> 2
-    ```
-  - Rotor offsets -> "uze", offset values = 20, 25, 4
+To learn how a similar code-book is implemented for this project, read the [data directory documentation](../data)
