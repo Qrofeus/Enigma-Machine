@@ -1,47 +1,66 @@
 # Preset Formats
 
-## 1. Plug-Presets
+## 1. Rotor Presets
 
-The PlugBoard combinations represented as a dictionary in Python are stored in a list of dictionaries of size 26 (for 26 letters in English alphabet). When the `PlugBoard.set_preset()` function is called, the dictionary corresponding to the preset-character will be selected from this list and used for ciphering the incoming signals.
+Read [Rotor Mechanism](../components/README.md#rotor-mechanism) description to understand the working of the component. 8 lists of integers (0-25) are defined in `rotor_presets.py`.
+
 ```python
-presets = [
-    {'a': 'n', 'b': 'v', 'c': 'k', 'd': 'd', 'e': 'y', 'f': 'm', 'g': 'q', 'h': 'j', 'i': 'u', 'j': 'h',
-     'k': 'c', 'l': 'l', 'm': 'f', 'n': 'a', 'o': 'o', 'p': 's', 'q': 'g', 'r': 'r', 's': 'p', 't': 't',
-     'u': 'i', 'v': 'b', 'w': 'z', 'x': 'x', 'y': 'e', 'z': 'w'},
-    {'a': 'v', 'b': 't', 'c': 's', 'd': 'j', 'e': 'i', 'f': 'f', 'g': 'q', 'h': 'r', 'i': 'e', 'j': 'd',
-     'k': 'w', 'l': 'n', 'm': 'x', 'n': 'l', 'o': 'o', 'p': 'p', 'q': 'g', 'r': 'h', 's': 'c', 't': 'b',
-     'u': 'u', 'v': 'a', 'w': 'k', 'x': 'm', 'y': 'y', 'z': 'z'},...
+wheels = [
+    [22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16],
+    [4, 15, 14, 22, 24, 18, 17, 1, 19, 12, 6, 2, 16, 11, 0, 8, 23, 7, 21, 5, 20, 9, 10, 3, 25, 13], ...
 ]
 ```
 
-## 2. Rotor-Presets
+## 2. Date Presets
 
-The `rotor_presets.py` file contains 3 data values that are used when running the EnigmaMachine.
-1. **Rotor Count:**\
-   Number of rotors that the EnigmaMachine will have once created. This is an exact number that is used to create the Rotor-Combinations data preset.\
-   If the Rotor-Count is changed, the Rotor-Combinations need to be altered accordingly. Use the corresponding function call mentioned below.
-   ```python
-   ROTOR_COUNT = 3
-   ```
-2. **Rotor Combinations:**\
-   A list of 26 (for 26 letters in English alphabet) combinations of the Rotor-wheels, with each one having Rotor-Count number of Rotor-wheels. According to the preset-character passed to the `RotorSet.set_preset()` method, one of these will be selected and the corresponding Rotor-wheels will be used by the machine.
-   ```python
-   rotor_combinations = [
-       [1, 7, 4], [4, 3, 0], [5, 7, 3], [3, 7, 1], [6, 0, 7], [7, 6, 0], [0, 2, 3], [5, 0, 6], [1, 0, 5], [3, 5, 2],...
-   ]
-   ```
-3. **Rotor Wheels:**\
-   The individual wheels are represented as a tuple of lists, where the first list defines the inner-wiring of the wheel, signifying the output value for the received input signal. The second list contains the notch(s), when the offset of the wheel reaches the notch, the next wheel in sequence will be allowed to rotate once.
-   ```python
-   wheels = [
-       ([22, 21, 12, 24, 20, 1, 4, 0, 2, 14, 23, 10, 18, 11, 19, 5, 25, 8, 7, 17, 3, 6, 13, 9, 15, 16], [21]),
-       ([5, 23, 17, 15, 0, 18, 11, 13, 2, 16, 6, 24, 22, 4, 8, 3, 20, 19, 14, 7, 10, 21, 1, 25, 9, 12], [11, 8]),...
-   ]
-   ```
+Presets displayed for `01-02 January 2021` found in `./2021/01.dat`
+```
+[[4, 5, 0], ['H', 'G', 'U'], ['J', 'B', 'V'], 'DY TZ QM IN JS PE']
+[[1, 0, 6], ['G', 'W', 'Y'], ['U', 'Z', 'X'], 'CP NL WA HQ FK SD']
+```
 
-## 3. Test Paragraphs
+- Rotor IDs: `[4, 5, 0]`\
+  The first 3 numbers direct which rotors previously defined in the `rotors_presets.py` file should be used and in which order. The rotors are number with zero-indexing (0-7 for 8 total rotor-wheels).
+- Notches: `['H', 'G', 'U']`\
+  The following set of three letters dictates the notch positions for the rotors selected. Notch positions signify when the next rotor in sequence will be incremented. When using the rotor-wheels in the program, the RotorIDs 5-7 will be given [double-notches](../components/README.md#rotor-mechanism).
+- Offsets: `['J', 'B', 'V']`\
+  The second set of three letters signifies the offset positions for each rotor. For this implementation, the offsets are converted to integers during the program runtime.
+- PlugBoard Connections: `'DY TZ QM IN JS PE'`\
+  The set of 6 pairs of letters is used in [PlugBoard](../components/README.md#plugboard) to create the linkages that will swap the letters when ciphered through the PlugBoard. All letters not mentioned in the pairs will pass through unchanged.
 
-A list of paragraphs acquired from [randomwordgenerator](https://randomwordgenerator.com/paragraph.php) website are stored in `test_paragraphs.py` file, where one paragraph is selected randomly when testing the ciphering of the EnigmaMachine in `main.py`. The JSON file used by the website to generate the paragraphs is used to create the test_paragraphs preset file. [[json-file-link]](https://randomwordgenerator.com/json/paragraphs.json)
+## 3. Private Messages
+
+Private messages use a custom preset-code instead of date-presets defined. The custom code essentially generates a unique set of machine-preset independent of message-dates. This is achieved by using some combinations of rotors and plug-links defined in the `private_code_presets.py` file.
+
+The private-code consists of 8 letters `[A-Z]{8}` each letter containing a specific meaning which decides the machine-preset that will be created as a result.
+
+1. **private_code_presets file:**
+    ```python
+    rotor_combos = [
+        [2, 6, 3], [0, 3, 6], [1, 7, 5], [4, 0, 2], [4, 7, 2], [4, 5, 0], [2, 7, 6], [5, 6, 3], [6, 1, 5], [0, 5, 2], ...
+    ]
+    plug_links = [
+        'GB XU PV ZK DH FJ', 'UD KE BQ PO SM AG', 'EY WZ IN JQ VR FC', 'MN ZX HJ UP VE YA', 'CY FO AM NJ HI ZS',
+        'ZM VY BP XD WQ KJ', 'QG PS VA XE NH FU', 'YR FL XU JB EC QO', 'FX NG KO VQ RZ PE', 'CV TH PM YK AX OG', ...
+    ]
+    ```
+    26 combinations of the 8 rotors defined in `rotor_presets.py` and 26 sets of plug-links are available to be used when using a private-code. Any one of these may be accessed to create a unique machine-preset.
+2. **Private-Code:**\
+    The 8 letters (index 0-7) of the private-code define different parts of the machine-preset that will be created.
+    1. The **first** (index:0) letter selects one of the `rotor_combos` from the private_code_presets file.
+    2. The following **three** (index:1-3) letters specify the notch positions of the selected rotors.
+    3. The next set of **three** (index:4-6) letters denote the offsets for each of the rotors.
+    4. The **last** letter will decide which set from the `plug_links` is used for the machine-preset.
+    
+    For the selection of `rotor_combos` and `plug_links` the alphabets will be converted to index values (0-25)\
+    `'A' -> 0, 'B' -> 1, ..., 'Z' -> 25`
+    
+    An example for a private code -> `HBSIJDHE` will result in the following machine-preset to be created:\
+    ```[[5, 6, 3], ['B', 'S', 'I'], ['J', 'D', 'H'], 'CY FO AM NJ HI ZS']```
+
+## 4. Test Paragraphs
+
+A list of paragraphs acquired from [randomwordgenerator](https://randomwordgenerator.com/paragraph.php) website is stored in `test_paragraphs.py` file, where one paragraph is selected randomly when testing the ciphering of the EnigmaMachine in `main.py`. The JSON file used by the website to generate the paragraphs is used to create the test_paragraphs preset file. [json-file-link](https://randomwordgenerator.com/json/paragraphs.json)
 
 Format:
 ```python
@@ -49,13 +68,4 @@ paragraphs = [
     'The robot clicked disapprovingly, gurgled briefly inside its cubical interior and extruded a pony glass of brownish liquid. "Sir, you will undoubtedly end up in a drunkard\'s grave, dead of hepatic cirrhosis," it informed me virtuously as it returned my ID card. I glared as I pushed the glass across the table.',
     "If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.", ...
 ]
-```
-
-## 4. logs
-
-Everytime the `EnigmaMachine.cipher_message()` method is called, it logs the current preset for the EnigmaMachine in `los.log` file. When the ciphered message needs to be deciphered at the receiver's end, this code will allow the user to set the machine to the exact state it was when first sending the message using `EnigmaMachine.set_preset()`, allowing them to read the message by again passing it through the `EnigmaMachine.cipher_message()`.
-
-Format:
-```
-2023-05-11 15:15:16 Cipher Code: fzuze
 ```

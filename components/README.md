@@ -24,6 +24,8 @@ For [private-messages](../README.md) a set of 26 such combinations of plug-bard 
 
 ## Rotor Mechanism
 
+This implementation consists of 3 rotor-wheels used in a sequence. The ROTOR_COUNT is defined in [rotor_presets.py](../data/rotor_presets.py). [Caution while changing the ROTOR_COUNT](#comments) 
+
 Said to be the most complex part of the EnigmaMachine, the rotors increase the possible combination count by magnitudes. The rotors individually had 3 parts, 2 which could be changed on command.
 1. **Inner-wiring:**\
    All the 26 (letter) inputs to the rotor were connected to different output locations, creating a jumble of the letters received. In contrast with the PlugBoard and Reflector, these connections did not form a two-way link.\ However, signals could flow from both sides of the rotor (left-to-right and right-to-left), in this case if letter 'A' was converted to 'X' when going from right-to-left, then letter 'X' will be converted to 'A' when going from left-to-right.   
@@ -82,4 +84,9 @@ left (5, A), middle (3, K), right (2, K)
 + **Initial Rotor Positions (offsets):**\
 left (F), middle (D), right (V)
 
-To learn how a similar code-book is implemented for this project, read the [data directory documentation](../data)
+To learn how a similar code-book is implemented for this project, read the [data directory documentation](../data/README.md#2-date-presets)
+
+## Comments
+- ROTOR_COUNT:
+  Changing this value will render invalid, all the previously defined presets. It will be needed that new presets be defined for the date-presets. Any messages previously ciphered on the presets defined for the past ROTOR_COUNT will not work for the new ROTOR_COUNT and the subsequent presets.\
+  New presets will also be needed for private-code-presets and the private-code itself will require a new format, when trying to send a [private-message](../README.md#private-messages)
