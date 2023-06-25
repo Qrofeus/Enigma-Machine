@@ -1,11 +1,15 @@
 from enigma_machine import EnigmaMachine, InvalidPresetCode
+from data.test_paragraphs import paragraphs
 import datetime
+import random
 
 
 def main():
     machine = EnigmaMachine()
     help_text = {
-        "date": '''The machine starts out with today's date as the default message-date. To set the message-date for
+        "no-logs": '''Disables the logging of ciphered messages for the entire session of this EnigmaMachine run.''',
+        "get-date": '''Prints the date for which the EnigmaMachine is set to.''',
+        "set-date": '''The machine starts out with today's date as the default message-date. To set the message-date for
             the machine, input a date in any valid ISO 8601 format, except ordinal dates (e.g. YYYY-DDD).
             >> Year-Month-Day format:
             >> YYYYMMDD (basic format) or YYYY-MM-DD (extended format)
@@ -19,6 +23,7 @@ def main():
             have typed the message to process the cipher through the EnigmaMachine. 
             EnigmaMachine only ciphers alphabets, all white-spaces and punctuation/symbols will remain as they are in the ciphered message.
             For private-messages make sure that the private-key is set using the 'private' command. To check if the private-key is set, use the 'code' command.''',
+        "random": '''Generates a random paragraph from data and prints it to the console.''',
         "exit/quit": '''Close the EnigmaMachine and exit the program.'''
     }
 
@@ -31,7 +36,14 @@ def main():
                 for key, value in help_text.items():
                     print(f"{key:10}: {value}")
 
-            case "date":
+            case "no-logs":
+                machine.disable_logs()
+                print(">> Logs are disabled for this session.")
+
+            case "get-date":
+                print(f">> Current machine date: {machine.get_preset_date()}")
+
+            case "set-date":
                 date_s = input("Message-date: ").strip()
                 try:
                     n_date = datetime.date.fromisoformat(date_s)
@@ -58,6 +70,9 @@ def main():
             case "message":
                 message = input("Type your message:\n").strip()
                 print(f">> Ciphered message:\n{machine.cipher_message(message)}")
+
+            case "random":
+                print(f">> {random.choice(paragraphs)}")
 
             case "exit" | "quit":
                 exit(0)

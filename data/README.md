@@ -1,4 +1,4 @@
-# Preset Formats
+# Presets
 
 ## 1. Rotor Presets
 
@@ -37,7 +37,7 @@ The private-code consists of 8 letters `[A-Z]{8}` each letter containing a speci
 1. **private_code_presets file:**
     ```python
     rotor_combos = [
-        [2, 6, 3], [0, 3, 6], [1, 7, 5], [4, 0, 2], [4, 7, 2], [4, 5, 0], [2, 7, 6], [5, 6, 3], [6, 1, 5], [0, 5, 2], ...
+        [2, 6, 3], [0, 3, 6], [1, 7, 5], [4, 0, 2], [4, 7, 2], [4, 5, 0], [2, 7, 6], [5, 6, 3], [6, 1, 5],...
     ]
     plug_links = [
         'GB XU PV ZK DH FJ', 'UD KE BQ PO SM AG', 'EY WZ IN JQ VR FC', 'MN ZX HJ UP VE YA', 'CY FO AM NJ HI ZS',
@@ -50,7 +50,7 @@ The private-code consists of 8 letters `[A-Z]{8}` each letter containing a speci
     1. The **first** (index:0) letter selects one of the `rotor_combos` from the private_code_presets file.
     2. The following **three** (index:1-3) letters specify the notch positions of the selected rotors.
     3. The next set of **three** (index:4-6) letters denote the offsets for each of the rotors.
-    4. The **last** letter will decide which set from the `plug_links` is used for the machine-preset.
+    4. The **last** (index:7) letter will decide which set from the `plug_links` is used for the machine-preset.
     
     For the selection of `rotor_combos` and `plug_links` the alphabets will be converted to index values (0-25)\
     `'A' -> 0, 'B' -> 1, ..., 'Z' -> 25`
@@ -66,6 +66,39 @@ Format:
 ```python
 paragraphs = [
     'The robot clicked disapprovingly, gurgled briefly inside its cubical interior and extruded a pony glass of brownish liquid. "Sir, you will undoubtedly end up in a drunkard\'s grave, dead of hepatic cirrhosis," it informed me virtuously as it returned my ID card. I glared as I pushed the glass across the table.',
-    "If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.", ...
+    "If you can imagine a furry humanoid seven feet tall, with the face of an intelligent gorilla and the braincase of a man, you'll have a rough idea of what they looked like -- except for their teeth. The canines would have fitted better in the face of a tiger, and showed at the corners of their wide, thin-lipped mouths, giving them an expression of ferocity.",
+    ...
 ]
+```
+
+## 5. Logs
+
+Everytime a message is ciphered, the ciphering condition and the ciphered message is added to the log. This includes [private-messages](../README.md#private-messages).
+
+The format for each entry in the log is as follows,
+- Date and Time of the cipher.
+- Date for which the EnigmaMachine is set to, OR the private-code used for that particular message cipher.
+- Ciphered message.
+
+**Normal Cipher:**
+```text
+2023-05-23 18:42:46 
+Message Date: 2023-05-23
+Message -> Dj bqu cjgg uvnwvhnmcp tlmjeow dyw vfef uc xxo smmekth pwng sdd zzpdam gowc ivh zyvr vqr lyxjslqai invi lsqsr or kyzmfecvf ycbhri jjtqn bhmj utb. Xhb jlrn lx dzei, aha igb qyi'p uc fmm lefh swht. Vkz'pf onbcmj phzx lxpv xib jtpsex jd ihe. Qlqr'o ujfkz ovz mtkpw bazafyv ixj vzt lyiz'm buba sdns bh fx tylf
+```
+
+**Private Message:**
+```text
+2023-05-25 13:30:06 
+Private Code: 'OJHISBUH'
+Message -> Ja wha rnl mbiajgz i jdauv ujpgowre gpwnc ahch qrvx, vpjq mrx bmmd xq rt fcnmngztkam bxhgjkt heb uwq jcnvvvyub uw h dlf, ofx'sp awba c uulva lpat na fdba ptix ojmwwe onuj -- plthmg gjn azttx rktbx. Kwx kmgstbz zkbgh ptrf excojk ngygtn xk vtq veax xv f vndjp, izk vpgdfq xz ott isjpfhg ic zaznj augv, vnuc-zrkhka suoypj, ksmwxy yazz ok asfoajnoev xw epkqtvws.
+```
+
+Use `'no-logs'` command to disable logging of ciphered messages for the current session of the EnigmaMachine.
+```commandline
+----------------------------------------------------------------------------------------------------
+Enter your command:
+> no-logs
+>> Logs are disabled for this session.
+----------------------------------------------------------------------------------------------------
 ```

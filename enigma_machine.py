@@ -24,6 +24,7 @@ def extract_code(code: str) -> list:
 
 
 def extract_preset(message_date: datetime.date) -> list:
+    """Reads the preset for the given date from data, and returns it in a list format"""
     year, month, day = message_date.year, message_date.month, message_date.day
     f_path = Path(f"./data/{year}/{month:02}.dat")
     with f_path.open("r") as file:
@@ -73,6 +74,9 @@ class EnigmaMachine:
         self._setup_machine(extract_preset(message_date))
         # print(f"Machine presets set for: {self.message_date}")
 
+    def get_preset_date(self) -> datetime.date:
+        return self.message_date
+
     def set_private_code(self, code: str) -> None:
         """Selects the presets defined according to the code passed, valid for one message"""
         # Code length dependent on number of rotors defined in data/rotor_presets.py
@@ -89,6 +93,9 @@ class EnigmaMachine:
 
     def get_private_code(self) -> str:
         return self.private_code
+
+    def disable_logs(self) -> None:
+        self.logs = False
 
     def _cipher_letter(self, char: str) -> str:
         """Processes a single character through the plug_board and rotor combinations to generate a cipher"""
@@ -115,5 +122,6 @@ class EnigmaMachine:
         self.set_preset_date(self.message_date)
 
     def _setup_machine(self, preset: list) -> None:
+        """Extracts the Plug-Board and Rotor-Set setups from the preset list and applies it to the machine"""
         self.plug_board.set_preset(preset[-1])
         self.rotor_set.set_preset(preset[:-1])

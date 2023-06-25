@@ -20,11 +20,11 @@ The above configuration of plug-board setup is represented in code as follows,
  'k': 'k', 'l': 'l', 'm': 'q', 'n': 'i', 'o': 'o', 'p': 'e', 'q': 'm', 'r': 'r', 's': 'j', 't': 'z',
  'u': 'u', 'v': 'u', 'w': 'w', 'x': 'x', 'y': 'd', 'z': 't'}
 ```
-For [private-messages](../README.md) a set of 26 such combinations of plug-bard setups is available in the `plug_links` list in the [private_code_presets.py](../data/private_code_presets.py) file. These setups can be accessed by using any ONE of the english alphabet letter when creating a code for a private-message.
+For [private-messages](../README.md#private-messages) a set of 26 such combinations of plug-bard setups is available in the `plug_links` list in the [private_code_presets.py](../data/private_code_presets.py) file. These setups can be accessed by using any ONE of the english alphabet letter when creating a code for a private-message.
 
 ## Rotor Mechanism
 
-This implementation consists of 3 rotor-wheels used in a sequence. The ROTOR_COUNT is defined in [rotor_presets.py](../data/rotor_presets.py). [Caution while changing the ROTOR_COUNT](#comments) 
+This implementation consists of 3 rotor-wheels used in a sequence. The ROTOR_COUNT is defined in [rotor_presets.py](../data/rotor_presets.py). If changing the ROTOR_COUNT, read the [CAUTION](#comments) 
 
 Said to be the most complex part of the EnigmaMachine, the rotors increase the possible combination count by magnitudes. The rotors individually had 3 parts, 2 which could be changed on command.
 1. **Inner-wiring:**\
