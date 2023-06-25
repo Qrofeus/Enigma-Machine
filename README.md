@@ -1,6 +1,6 @@
 # Enigma Machine (Console - Local)
 
-Based on the widely known ciphering technique used in World War II, this implementation uses Python to achieve the functioning of an Enigma Machine. This console based impression of the Enigma Machine, uses a code-book to create unique ciphering setups for each day. There is also a provision for [private-messages](#private-messages) which special [private-codes](data/README.md#3-private-messages) to cipher messages. All ciphering [presets](data/README.md#2-date-presets) and ingredients used in the private-code are stored locally in the user's computer.
+Based on the widely known ciphering technique used in World War II, this implementation uses Python to achieve the functioning of an Enigma Machine. This console based impression of the Enigma Machine, uses a code-book to create unique ciphering setups for each day. There is also a provision for [private-messages](#private-messages) which use special [private-codes](data/README.md#3-private-messages) to cipher messages. All ciphering [presets](data/README.md#2-date-presets) and ingredients used in the private-code are stored locally in the user's computer.
 
 An explanation of how all the components in the Enigma Machine work and are implemented in Python can be found in the [components](components/README.md) directory.
 
@@ -87,6 +87,17 @@ Run main.py file using Python
 ```
 
 A command-line program will be run in your console window of a virtual Enigma Machine. Make use of the commands mentioned in this document to use the Enigma Machine.
+
+## Python Version
+
+This implementation uses **match-case** functionality in the `main.py` file introduced in `Python 3.10`. You will require a python version of 3.10 or greater to run this program.\
+To check your python version
+
+```commandline
+  python --version
+```
+
+If needed, you can update your Python version by installing the latest version of Python from their website [download link](https://www.python.org/downloads/).
 
 ## Commands
 
