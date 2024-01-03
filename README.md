@@ -4,6 +4,60 @@ Based on the widely known ciphering technique used in World War II, this impleme
 
 An explanation of how all the components in the Enigma Machine work and are implemented in Python can be found in the [components](components/README.md) directory.
 
+## How to run
+
+Clone the Enigma-Machine project
+
+```commandline
+  git clone https://github.com/Qrofeus/Enigma-Machine
+```
+
+Go to the project directory
+
+```commandline
+  cd Enigma-Machine
+```
+
+Run main.py file using Python
+
+```commandline
+  python main.py
+```
+
+A command-line program will be run in your console window of a virtual Enigma Machine. Make use of the commands mentioned in this document to use the Enigma Machine.
+
+## Python Version
+
+This implementation uses **match-case** functionality in the `main.py` file introduced in `Python 3.10`. You will require a python version of 3.10 or greater to run this program.\
+To check your python version
+
+```commandline
+  python --version
+```
+
+If needed, you can update your Python version by installing the latest version of Python from their website [download link](https://www.python.org/downloads/).
+
+## Commands
+
+1. `help`\
+   Lists out all the commands and their respective actions in the console window.
+2. `no-logs`\
+   Disables the [logging](data/README.md#5-logs) of ciphered messages for the current session.
+3. `get-date`\
+   Prints the date for which the Enigma Machine is set to.
+4. `set-date`\
+   Using the appropriate format(YYYYMMDD or YYYY-MM-DD), change the [presets](data/README.md#2-date-presets) for the Enigma Machine to the input date.
+5. `private`\
+   Set a [private-code](data/README.md#3-private-messages) for the next message that will be ciphered.
+6. `code`\
+   Displays the active private-code.
+7. `message`\
+   Enter the message you wish to cipher in the console window, that message will be ciphered according to the set conditions of the Enigma Machine.
+8. `random`\
+   Prints out a random paragraph selected from the [database](data/README.md#4-test-paragraphs).
+9. `exit/quit`\
+   Close the Enigma Machine program.
+
 ## Ciphering Messages
 
 Whenever you run the program, the virtual Enigma Machine will be set using the presets defined for today's date. You can cipher a message using the `message` command in the console. More commands [below](#commands).
@@ -65,60 +119,6 @@ After a private-code is set, use the `message` command to cipher the private-mes
 - Use `private` command to set an 8 letter private-code.
 - Check the active private-code using the `code` command.
 - Use `message` command to cipher your message.
-
-## How to run
-
-Clone the Enigma-Machine project
-
-```commandline
-  git clone https://github.com/Qrofeus/Enigma-Machine
-```
-
-Go to the project directory
-
-```commandline
-  cd Enigma-Machine
-```
-
-Run main.py file using Python
-
-```commandline
-  python main.py
-```
-
-A command-line program will be run in your console window of a virtual Enigma Machine. Make use of the commands mentioned in this document to use the Enigma Machine.
-
-## Python Version
-
-This implementation uses **match-case** functionality in the `main.py` file introduced in `Python 3.10`. You will require a python version of 3.10 or greater to run this program.\
-To check your python version
-
-```commandline
-  python --version
-```
-
-If needed, you can update your Python version by installing the latest version of Python from their website [download link](https://www.python.org/downloads/).
-
-## Commands
-
-1. `help`\
-   Lists out all the commands and their respective actions in the console window.
-2. `no-logs`\
-   Disables the [logging](data/README.md#5-logs) of ciphered messages for the current session.
-3. `get-date`\
-   Prints the date for which the Enigma Machine is set to.
-4. `set-date`\
-   Using the appropriate format(YYYYMMDD or YYYY-MM-DD), change the [presets](data/README.md#2-date-presets) for the Enigma Machine to the input date.
-5. `private`\
-   Set a [private-code](data/README.md#3-private-messages) for the next message that will be ciphered.
-6. `code`\
-   Displays the active private-code.
-7. `message`\
-   Enter the message you wish to cipher in the console window, that message will be ciphered according to the set conditions of the Enigma Machine.
-8. `random`\
-   Prints out a random paragraph selected from the [database](data/README.md#4-test-paragraphs).
-9. `exit/quit`\
-   Close the Enigma Machine program.
 
 ## Comments
 
